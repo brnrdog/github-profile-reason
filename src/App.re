@@ -1,14 +1,18 @@
+open AppStyles;
 let component = ReasonReact.statelessComponent("App");
+
+let repository: RepositoryCard.repository = {
+  id: "1",
+  name: "Spawnpoint",
+  description: "A starter template for new Rails projects",
+};
 
 let make = _children => {
   ...component,
   render: _self =>
-    <div>
-      <Sheet>
-        <Card style={ReactDOMRe.Style.make(~height="300px", ())}>
-          <h1> {ReasonReact.string("Spawnpoint")} </h1>
-          <p> {ReasonReact.string("Some description goes here...")} </p>
-        </Card>
-      </Sheet>
+    <div className=Styles.app>
+      <div className=Styles.container>
+        <Sheet> <Profile /> <PinnedRepositories /> </Sheet>
+      </div>
     </div>,
 };

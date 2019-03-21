@@ -1,19 +1,20 @@
 let component = ReasonReact.statelessComponent("Card");
 
-let makeStyle = style => {
-  let default =
-    ReactDOMRe.Style.make(
-      ~border="1px solid #EBEBEB",
-      ~borderRadius=".25rem",
-      ~padding="1rem",
-      (),
-    );
+module Styles = {
+  open Css;
 
-  ReactDOMRe.Style.combine(default, style);
+  let card =
+    style([
+      border(px(1), `solid, hex("ebebeb")),
+      borderRadius(rem(0.25)),
+      padding(rem(1.0)),
+    ]);
 };
 
-let make = (~style, children) => {
+let make = (~className, children) => {
   ...component,
   render: _self =>
-    <div style={makeStyle(style)}> {ReasonReact.array(children)} </div>,
+    <div className={Styles.card ++ " " ++ className}>
+      {ReasonReact.array(children)}
+    </div>,
 };
