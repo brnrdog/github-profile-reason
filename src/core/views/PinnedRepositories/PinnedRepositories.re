@@ -15,7 +15,7 @@ let repositories: list(RepositoryCard.repository) = [
   {
     id: "3",
     name: "Spawnpoint",
-    description: "A starter template for Rails projects",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
 ];
 

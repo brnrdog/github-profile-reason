@@ -1,5 +1,5 @@
 {
-  "name": "gitme-reason",
+  "name": "github-profile-reason",
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",

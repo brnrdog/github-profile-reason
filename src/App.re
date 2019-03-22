@@ -12,7 +12,11 @@ let make = _children => {
   render: _self =>
     <div className=Styles.app>
       <div className=Styles.container>
-        <Sheet> <Profile /> <PinnedRepositories /> </Sheet>
+        <Sheet>
+          <Profile />
+          <PinnedRepositories />
+          <RepositoriesList />
+        </Sheet>
       </div>
     </div>,
 };
