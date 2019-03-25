@@ -14,7 +14,5 @@ module Styles = {
 let make = (~className, children) => {
   ...component,
   render: _self =>
-    <div className={Styles.card ++ " " ++ className}>
-      {ReasonReact.array(children)}
-    </div>,
+    <div className={Styles.card ++ " " ++ className}> ...children </div>,
 };

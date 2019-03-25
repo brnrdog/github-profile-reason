@@ -8,18 +8,28 @@ module Styles = {
       display(`flex),
       justifyContent(`spaceBetween),
       flexWrap(`wrap),
-      media("(min-width: 768px)", [flexWrap(`nowrap)]),
     ]);
 
   let card =
     style([
       width(`percent(100.0)),
-      margin(em(1.0)),
+      flex(1),
+      marginBottom(em(1.0)),
       media(
         "(min-width: 768px)",
         [
+          margin(em(1.0)),
+          flexWrap(`nowrap),
+          marginRight(px(0)),
           firstChild([marginLeft(px(0))]),
-          lastChild([marginRight(px(0))]),
+          lastChild([marginLeft(px(0)), marginRight(px(0))]),
+        ],
+      ),
+      media(
+        "(min-width: 1024px)",
+        [
+          marginRight(em(1.0)),
+          lastChild([marginLeft(em(1.0)), marginRight(px(0))]),
         ],
       ),
     ]);
