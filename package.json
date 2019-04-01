@@ -16,7 +16,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@glennsl/bs-jest": "^0.4.8",
+    "@glennsl/bs-revamp": "^0.1.1",
     "bs-css": "^8.0.3",
+    "bs-numeral": "^0.1.0",
+    "dotenv": "^7.0.0",
+    "dotenv-webpack": "^1.7.0",
+    "numeral": "^2.0.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reason-apollo": "^0.15.2",

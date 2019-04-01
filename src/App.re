@@ -4,11 +4,11 @@ let component = ReasonReact.statelessComponent("App");
 let make = _children => {
   ...component,
   render: _self =>
-    <ReasonApollo.Provider client=Data.instance>
+    <ReasonApollo.Provider client=GitHubApolloClient.instance>
       <div className=Styles.app>
         <div className=Styles.container>
           <Sheet>
-            <Profile />
+            <ProfileContainer />
             <PinnedRepositoriesContainer />
             <RepositoriesListContainer />
           </Sheet>

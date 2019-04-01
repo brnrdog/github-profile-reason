@@ -2,6 +2,8 @@ module GetPinnedRepositories = [%graphql
   {|
   query PinnedRepositories {
     user(login: "gaearon") {
+      id
+
       pinnedRepositories(first: 3) {
         edges {
           node {
@@ -9,12 +11,12 @@ module GetPinnedRepositories = [%graphql
             name
             description
             forkCount
-            
+
             primaryLanguage {
               color
               name
             }
-            
+
             stargazers {
               totalCount
             }

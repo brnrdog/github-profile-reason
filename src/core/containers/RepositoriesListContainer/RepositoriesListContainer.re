@@ -2,6 +2,7 @@ module GetRepositories = [%graphql
   {|
     query Repositories {
       user(login: "gaearon") {
+        id
         repositories(first: 10) {
           edges {
             node {
@@ -25,8 +26,6 @@ module GetRepositories = [%graphql
     }
   |}
 ];
-
-type payload;
 
 module RepositoriesQuery = ReasonApollo.CreateQuery(GetRepositories);
 
