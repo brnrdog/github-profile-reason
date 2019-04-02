@@ -1,0 +1,1 @@
+[@bs.val] external githubApiToken: string = "process.env.GITHUB_API_TOKEN";

@@ -1,5 +1,3 @@
-[@bs.val] external githubApiToken: string = "process.env.GITHUB_API_TOKEN";
-
 /* Create an InMemoryCache */
 let inMemoryCache = ApolloInMemoryCache.createInMemoryCache();
 
@@ -9,7 +7,7 @@ let httpLink =
     ~uri="https://api.github.com/graphql",
     ~headers=
       Js.Json.parseExn(
-        "{\"Authorization\": \"Bearer " ++ githubApiToken ++ "\" }",
+        "{\"Authorization\": \"Bearer " ++ Env.githubApiToken ++ "\" }",
       ),
     (),
   );
