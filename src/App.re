@@ -7,11 +7,7 @@ let make = _children => {
     <ReasonApollo.Provider client=GitHubApolloClient.instance>
       <div className=Styles.app>
         <div className=Styles.container>
-          <Sheet>
-            <ProfileContainer />
-            <PinnedRepositoriesContainer />
-            <RepositoriesListContainer />
-          </Sheet>
+          <Sheet> <AppContainer /> </Sheet>
         </div>
       </div>
     </ReasonApollo.Provider>,
