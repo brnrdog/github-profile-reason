@@ -1,5 +1,6 @@
 module Styles = {
   open Css;
+  open Theme;
 
   let wrapper =
     style([

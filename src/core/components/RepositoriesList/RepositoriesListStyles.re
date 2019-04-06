@@ -13,6 +13,7 @@ module Styles = {
     style([
       margin2(~h=em(-1.0), ~v=px(0)),
       padding(em(1.0)),
+      cursor(`pointer),
       borderBottom(px(1), `solid, hex("EBEBEB")),
       hover([background(hex("F8F8F8"))]),
       lastChild([borderColor(`transparent), paddingBottom(px(0))]),

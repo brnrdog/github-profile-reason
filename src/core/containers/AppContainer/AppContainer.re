@@ -1,3 +1,6 @@
+[@bs.module "react-spinners-kit"]
+external spinner: ReasonReact.reactClass = "StageSpinner";
+
 module GetGitHubProfile = [%graphql
   {|
   query GitHubProfile {
@@ -65,24 +68,39 @@ module GitHubProfileQuery = ReasonApollo.CreateQuery(GetGitHubProfile);
 
 let component = ReasonReact.statelessComponent("PinnedRepositoriesContainer");
 
-let make = _children => {
+[@bs.deriving abstract]
+type jsProps = {color: string};
+
+let make = children => {
   ...component,
   render: _self =>
     <GitHubProfileQuery>
       ...{({result}) =>
         switch (result) {
-        | Loading => ReasonReact.string("Loading...")
+        | Loading =>
+          <div
+            className={Css.style([
+              Css.display(`flex),
+              Css.justifyContent(`center),
+            ])}>
+            {ReasonReact.element(
+               {ReasonReact.wrapJsForReason(
+                  ~reactClass=spinner,
+                  ~props=jsProps(~color="#847e7b"),
+                  children,
+                )},
+             )}
+          </div>
         | Error(error) => ReasonReact.string(error##message)
         | Data(data) =>
           let user = Belt.Option.getExn(data##user);
           let repositories = mapEdges(user##repositories##edges);
           let pinnedRepositories = mapEdges(user##pinnedRepositories##edges);
-
-          <>
+          <Sheet>
             <Profile user />
             <PinnedRepositories repositories=pinnedRepositories />
             <RepositoriesList repositories />
-          </>;
+          </Sheet>;
         }
       }
     </GitHubProfileQuery>,

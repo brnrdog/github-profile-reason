@@ -1,5 +1,6 @@
 module Styles = {
   open Css;
+  open Theme;
 
   let heading = style([fontSize(em(1.25)), marginBottom(em(1.0))]);
 
@@ -16,7 +17,7 @@ module Styles = {
       flex(1),
       marginBottom(em(1.0)),
       media(
-        "(min-width: 768px)",
+        Breakpoints.medium,
         [
           margin(em(1.0)),
           flexWrap(`nowrap),
@@ -26,7 +27,7 @@ module Styles = {
         ],
       ),
       media(
-        "(min-width: 1024px)",
+        Breakpoints.large,
         [
           marginRight(em(1.0)),
           lastChild([marginLeft(em(1.0)), marginRight(px(0))]),
