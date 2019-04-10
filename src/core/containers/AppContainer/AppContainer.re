@@ -60,10 +60,6 @@ module GetGitHubProfile = [%graphql
 
 type payload;
 
-let mapEdges = edges =>
-  Belt.Option.getWithDefault(edges, [||])
-  |> Array.map(edge => Belt.Option.getExn(edge)##node);
-
 module GitHubProfileQuery = ReasonApollo.CreateQuery(GetGitHubProfile);
 
 let component = ReasonReact.statelessComponent("PinnedRepositoriesContainer");
@@ -93,14 +89,12 @@ let make = children => {
           </div>
         | Error(error) => ReasonReact.string(error##message)
         | Data(data) =>
+          open Graphql;
           let user = Belt.Option.getExn(data##user);
           let repositories = mapEdges(user##repositories##edges);
           let pinnedRepositories = mapEdges(user##pinnedRepositories##edges);
-          <Sheet>
-            <Profile user />
-            <PinnedRepositories repositories=pinnedRepositories />
-            <RepositoriesList repositories />
-          </Sheet>;
+
+          <GitHubProfile user repositories pinnedRepositories />;
         }
       }
     </GitHubProfileQuery>,
